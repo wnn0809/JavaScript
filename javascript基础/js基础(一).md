@@ -112,11 +112,11 @@ xiaoming.aihao = “女”;
  - 变量的赋值：变量名称=要赋值的内容；
 例如：sex="女";
  - 变量的命名规范：
- 1.变量名称的取值范围是：0-9,a-z,A-Z。
- 2.数字不能作为变量名称的开始部分。
-3.变量的名称是区分大小写的。
-4.变量的名称不能是关键字和保留字（备胎）
-![关键字和保留字](https://img-blog.csdnimg.cn/20181105152358657.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3cxNDE4ODk5NTMy,size_16,color_FFFFFF,t_70)
+    1.变量名称的取值范围是：0-9,a-z,A-Z。
+    2.数字不能作为变量名称的开始部分。
+    3.变量的名称是区分大小写的。
+    4.变量的名称不能是关键字和保留字（备胎）
+ ![关键字和保留字](https://img-blog.csdnimg.cn/20181105152358657.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3cxNDE4ODk5NTMy,size_16,color_FFFFFF,t_70)
 ## 7.运算符
  - 算数运算符：
 内容：+（加）、-（减）、*（乘）、/（除）、%（取余）、()（提高优先级）、Math(平方，立方，4次方，sin,cos)。
