@@ -1,0 +1,2 @@
+# JavaScript
+JavaScript是前端学习中最重要的部分，本仓库记录JavaScript相关基础和进阶知识，以及一些常用的js库和js框架学习记录。
