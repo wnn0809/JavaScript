@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-Compatible" content="ie=edge">
+	<title>递归实现二分查找算法</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//递归方式
+		function divisionTwo(arr, searchNum, beginIndex, lastIndex){
+			//获取数组长度
+			var len = arr.length;
+			//起始位置,参数缓存，下次调用时使用
+			beginIndex = beginIndex || 0 ;
+			//结束位置,参数缓存，下次调用时使用
+			lastIndex = lastIndex || len - 1;
+			//中间位置
+			//floor(x)：返回小于等于x的最大整数
+			var mid = Math.floor((beginIndex+lastIndex)/2) ;
+			//查找的值searchNum与中间值arr[mid]相比较
+			if (searchNum == arr[mid]){
+			 	return mid;
+			}else if(searchNum > arr[mid]){
+			 	//查找的值searchNum大于中间值，在右侧查找，起始位置想右侧移动mid+1位
+			 	beginIndex = mid +1;
+			 	
+			}else{
+			 	//查找的值searchNum小于中间值，在左侧查找，结束位置向左侧移动mid-1位
+			 	lastIndex = mid -1;
+			}
+			//递归，函数调用自身
+		 	return divisionTwo(arr, searchNum, beginIndex, lastIndex)
+		}
+		//例如要在arry数组中查找数字18
+		var arry = [1,2,3,5,7,11,15,18,22,45];
+		console.log(divisionTwo(arry,18));//7
+		console.log(arry[divisionTwo(arry,18)])//18
+	</script>
+</body>
+</html>
