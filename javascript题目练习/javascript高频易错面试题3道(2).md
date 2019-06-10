@@ -120,9 +120,25 @@ test4399.getColor();
 
 这道题是4399游戏的笔试题，主要考察this指向问题。
 
-知识点1：this指向：在js中，this总是指向调用它的对象。
+**知识点1：**
 
-知识点2：js函数调用时加括号与不加括号区别：不加括号相当于把函数代码赋值给等号左边，加括号是把函数的返回值赋给等号左边。如：`var getColor = test4399.getColor;` test4399.getColor不加括号相当于把test4399对象中的getColor函数的函数代码赋值给等号左边的getColor 。
+this指向：在js中，this总是指向调用它的对象。
+
+场景有4类：
+
+1.有对象就指向调用对象。 
+
+2.没有对象就指向全局对象。
+
+ 3.用new构造就指向新对象。 
+
+4.通过apply或call或bind来改变this的所指，绑定传入的第一个参数。
+
+**知识点2：**
+
+js函数调用时加括号与不加括号区别：
+
+不加括号相当于把函数代码赋值给等号左边，加括号是把函数的返回值赋给等号左边。如：`var getColor = test4399.getColor;` test4399.getColor不加括号相当于把test4399对象中的getColor函数的函数代码赋值给等号左边的getColor 。
 
 `getColor();` 就相当于普通函数的调用。此时的`this.color`中的this指向window，所以此时`this.color`的值应该是全局变量color的值，即`green`。
 
