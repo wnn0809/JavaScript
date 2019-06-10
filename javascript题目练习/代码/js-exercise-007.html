@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>立即执行匿名函数与this</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var myObject = {
+			foo:"bar",
+			func:function() {
+				var self = this;
+				console.log(this.foo);//bat
+				console.log(self.foo);//bar
+				(function(){
+					console.log(this.foo);//undefined
+					console.log(self.foo);//bar
+				}());
+			}
+		};
+
+		myObject.func();
+
+	</script>
+</body>
+</html>
