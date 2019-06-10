@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>this指向问题</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var color = 'green'
+		var test4399 = {
+			color:'blue',
+			getColor:function(){
+				var color = 'red';
+				alert(this.color);
+			}
+		}
+
+		var getColor = test4399.getColor;
+		getColor();//green,此时this指向window
+		test4399.getColor();//blue，此时this指向对象test439
+	</script>
+</body>
+</html>
