@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js执行机制，队列任务优先级</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//先执行同步代码，遇到异步代码就先加入队列，然后按入队的顺序执行异步代码，最后执行setTimeout队列的代码。
+		//队列任务优先级：promise.Trick()>promise的回调>setTimeout>setImmediate
+		async function async1() {
+            console.log("async1 start");
+            //执行这一句后，输出async2后，await会让出当前线程，将后面的代码加到任务队列中，继续后面的同步代码
+            await  async2();
+            console.log("async1 end");
+ 
+        }
+
+        async  function async2() {
+           console.log( 'async2');
+        }
+
+        console.log("script start");
+
+        setTimeout(function () {
+            console.log("settimeout");
+        },0);
+
+        async1();
+
+        new Promise(function (resolve) {
+            console.log("promise1");
+            resolve();
+        }).then(function () {
+            console.log("promise2");
+        });
+
+        console.log('script end');
+
+        //script start
+        //async1 start
+        //async2
+        //promise1
+        //script end
+        //async1 end
+        //promise2
+        //settimeout
+
+	</script>
+</body>
+</html>
