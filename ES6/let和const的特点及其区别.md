@@ -110,41 +110,49 @@ const和let一样具有只在块级作用域有效、不存在变量提升、暂
     在内部封装好对象，输出时就会有内容输出。
 
     ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202175100469.png)
-    
+
 
 - const并非真正的常量
 
-const 的本质:
+    const 的本质:
 
- const 定义的变量并非常量，并非不可变，它定义了一个常量，引用一个值。使用 const 定义的对象或者数组，其实是可变的。
+     const 定义的变量并非常量，并非不可变，它定义了一个常量，引用一个值。使用 const 定义的对象或者数组，其实是可变的。
  
  
-1.对象操作
+    1.对象操作
 
- 如下修改对象属性值和增加属性并不会报错：
+     如下修改对象属性值和增加属性并不会报错：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202180005106.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3cxNDE4ODk5NTMy,size_16,color_FFFFFF,t_70)
-    
-输出结果为：
+    ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202180005106.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3cxNDE4ODk5NTMy,size_16,color_FFFFFF,t_70)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202180044642.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3cxNDE4ODk5NTMy,size_16,color_FFFFFF,t_70)
-    
-***但是不能对常量对象重新赋值。！！！*** 如下：
+        
+    输出结果为：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202180427961.png)
-    
-2.数组操作
+    ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202180044642.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3cxNDE4ODk5NTMy,size_16,color_FFFFFF,t_70)
 
- 如下修改数组元素和增加元素并不会报错：
+        
+    ***但是不能对常量对象重新赋值。！！！*** 如下：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202181440405.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3cxNDE4ODk5NTMy,size_16,color_FFFFFF,t_70)
-    
-输出结果为：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202181518369.png)
+    ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202180427961.png)
 
-***但是不能对常量数组重新赋值。！！！*** 如下情况会报错。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202181919109.png)
+        
+    2.数组操作
+
+     如下修改数组元素和增加元素并不会报错：
+
+    ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202181440405.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3cxNDE4ODk5NTMy,size_16,color_FFFFFF,t_70)
+        
+    输出结果为：
+
+    ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202181518369.png)
+
+    ***但是不能对常量数组重新赋值。！！！*** 
+
+    如下情况会报错。
+
+
+    ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202181919109.png)
 
 
 ## 每天进步一点点、快乐充实一点点、开心一点点！加油！The Girl！
