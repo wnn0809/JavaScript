@@ -7,11 +7,15 @@ let 和 const是ES2015(ES6) 新增加的两个重要的 JavaScript 关键字。
 *1.ES6新增let命令。*
 
 用来声明变量，用法类似var，但是它所声明的变量只在let命令所在的代码块内有效。使用方法如下：
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181213090431188.png)
+
 *2.不存在变量提升。*
 
 let不像var那样，会发生"变量提升"现象。
+
 通过如下程序分析：
+
 
 ![let不存在变量提升](https://img-blog.csdnimg.cn/2018120216040374.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3cxNDE4ODk5NTMy,size_16,color_FFFFFF,t_70)
 
@@ -20,9 +24,11 @@ let不像var那样，会发生"变量提升"现象。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202160547420.png)
 
 问题：
+
 `a[5]();`输出为9，`b[5]();`输出为5。为什么呢？为什么`a[5]();`输出不是理想中的5呢？
 
 答案：
+
 因为上述ES5写法循环结束的时候i的值已经为10，c=9，调用`a[5]();`时i是循环结束时的值，c=9，因此输出是9。
 
 而d变量是由let声明，只在循环体内部起作用，在外部不起作用，影响不了外部的d，所以在调用第5个d时，值为5。
@@ -72,37 +78,39 @@ const和let一样具有只在块级作用域有效、不存在变量提升、暂
     
     2.const 定义常量的值不能通过再赋值修改，也不能再次声明。而 let 定义的变量值可以修改。
     
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202172736952.png)
+    ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202172736952.png)
 
 
 - 特性：
 
-const 声明一个只读的常量，一旦声明，常量的值就不能改变。
+    const 声明一个只读的常量，一旦声明，常量的值就不能改变。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202173052724.png)
+    ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202173052724.png)
 
 
 - const声明对象
 
-const可以声明一个对象和数组。
+    const可以声明一个对象和数组。
 
-实例如下：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202173428874.png)
+    实例如下：
+
+    ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202173428874.png)
 
 - 对象的冻结
 
-1.冻结方法
+    1.冻结方法
 
-可以使用Object使const对象冻结。
+    可以使用Object使const对象冻结。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202174614655.png)
+    ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202174614655.png)
 
-2.使用对象冻结
+    2.使用对象冻结
 
 
-在内部封装好对象，输出时就会有内容输出。
+    在内部封装好对象，输出时就会有内容输出。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202175100469.png)
+    ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202175100469.png)
+    
 
 - const并非真正的常量
 
@@ -114,18 +122,22 @@ const 的本质:
 1.对象操作
 
  如下修改对象属性值和增加属性并不会报错：
-     ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202180005106.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3cxNDE4ODk5NTMy,size_16,color_FFFFFF,t_70)
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202180005106.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3cxNDE4ODk5NTMy,size_16,color_FFFFFF,t_70)
     
 输出结果为：
-     ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202180044642.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3cxNDE4ODk5NTMy,size_16,color_FFFFFF,t_70)
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202180044642.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3cxNDE4ODk5NTMy,size_16,color_FFFFFF,t_70)
     
 ***但是不能对常量对象重新赋值。！！！*** 如下：
-    ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202180427961.png)
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202180427961.png)
     
 2.数组操作
 
  如下修改数组元素和增加元素并不会报错：
-    ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202181440405.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3cxNDE4ODk5NTMy,size_16,color_FFFFFF,t_70)
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20181202181440405.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3cxNDE4ODk5NTMy,size_16,color_FFFFFF,t_70)
     
 输出结果为：
 
