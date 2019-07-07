@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>回文数字</title>
+</head>
+<body>
+    <!-- 判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
+
+    示例 1:
+    输入: 121
+    输出: true
+
+    示例 2:
+    输入: -121
+    输出: false
+    解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。
+
+    示例 3:
+    输入: 10
+    输出: false
+    解释: 从右向左读, 为 01 。因此它不是一个回文数。
+ -->
+ <script>
+    //  方法1
+    function palindrome(num){
+        var arr= String(num).split('')
+        for(let i=0;i<arr.length;i++){
+            const temp = arr[arr.length-1-i]
+            if(temp!==arr[i]){
+                return false
+            }
+        }
+        
+        return true
+    }
+    console.log(palindrome(101030101))
+
+    // 方法2，取中间数字，判断两边，可以减少比较次数，是对方法1的优化
+    function palindrome2(num){
+        const arr = String(num).split('')
+        for(let i=0;i<arr.length/2;i++){
+            if(arr[i]!==arr[arr.length-i-1]){
+                return false
+            }
+        }
+        return true
+    }
+    // 调用函数
+    console.log(palindrome2(101030101))
+
+    //方法3 输入的num是数字，如果是字符串就不需要做数字转化为字符串了
+    function palindrome3(num){
+        const arr = String(num).split('')
+        return String(num) == arr.reverse().join('')
+    }
+
+    console.log(palindrome3(101030101))
+ </script>
+</body>
+</html>
