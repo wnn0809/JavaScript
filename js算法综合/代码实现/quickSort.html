@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>快速排序</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*<!--
+		 快速排序基本思想是：通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。
+		 -->
+		*/
+		var arr=[5,7,2,9,3,8,4,7,1];
+		// 每次选择最左边的数作为基数
+		function quickSort(arr){
+			//递归出口条件
+		  if (arr.length<2) { return arr; }
+		  // 定义左指针
+		  var left=0;
+		  // 定义右指针
+		  var right=arr.length-1;
+		  //开启每一轮的排序
+		  while(left<right){
+		    // 不断递减变量right的值，直到找到右边比arr[0]小的数的下标，找到后二者交换位置
+		    while(arr[right]>=arr[0] && left<right){
+		      right=right-1;
+		    }
+		    // 不断递增left变量的值，直到找到左边比arr[0]大的数的下标,找到后二者交换位置
+		    while(arr[left]<=arr[0] && left<right){
+		      left++;
+		    }
+		    //当左边指针与右边指针相遇后，交换arr[0]与当前两个指针所在的元素
+		    if (right==left) {
+		      let mid=arr[right];
+		      arr[right]=arr[0];
+		      arr[0]=mid;
+		      break;
+		    }
+		 
+		    //符合上面条件后 交换两个指针当前位置的元素
+		    let tem=arr[right];
+		    arr[right]=arr[left];
+		    arr[left]=tem;
+		  }
+
+		  //多次分解数组，直到数组不能再分解为止（只有一个数据），才能得到正确结果
+		  //递归实现
+		  var leftarr=quickSort(arr.slice(0,left))//每次抽取指针左侧元素做quickSort，left值在变化
+		  var rightarr=leftarr.concat(arr.slice(left,right+1))//将指针所指元素连接到左侧数组中
+		  var newarr = rightarr.concat(quickSort(arr.slice(right+1)))//先把right+1到末尾的数组元素做quickSort，然后连接到上面数组后面
+		  return newarr
+		}
+		//对数组进行排序
+		console.log(quickSort(arr));
+	</script>
+	
+</body>
+</html>
