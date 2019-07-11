@@ -10,37 +10,40 @@
 		 快速排序基本思想是：通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。
 		 -->
 		*/
-		var arr=[5,2,8,5,4,9,0];
+		function swap(array,left,right){
+			let temp = array[right];
+			array[right] = array[left];
+			array[left] = temp;
+		}
+
+		var arr=[5,8,4,9,3,4,7];
 		// 每次选择最左边的数作为基数
 		function quickSort(arr){
 			//递归出口条件
 		  if (arr.length<2) { return arr; }
-		  // 定义左指针
+		  // 1.定义左右指针
 		  var left=0;
-		  // 定义右指针
 		  var right=arr.length-1;
+		  // 2.找基准值
+		  var pivot = arr[0];
 		  //开启每一轮的排序
 		  while(left<right){
-		    // 不断递减变量right的值，直到找到右边比arr[0]小的数的下标，找到后二者交换位置
-		    while(arr[right]>=arr[0] && left<right){
-		      right=right-1;
+		    // 3.不断递减变量right的值，直到找到右边比arr[0]小的数的下标，找到后二者交换位置
+		    while(arr[right]>=pivot && left<right){
+		      right--;
 		    }
-		    // 不断递增left变量的值，直到找到左边比arr[0]大的数的下标,找到后二者交换位置
-		    while(arr[left]<=arr[0] && left<right){
+		    // 4.不断递增left变量的值，直到找到左边比arr[0]大的数的下标,找到后二者交换位置
+		    while(arr[left]<=pivot && left<right){
 		      left++;
 		    }
-		    //当左边指针与右边指针相遇后，交换arr[0]与当前两个指针所在的元素
+		    //5.当左边指针与右边指针相遇后，交换arr[0]与当前两个指针所在的元素
 		    if (right==left) {
-		      let mid=arr[right];
-		      arr[right]=arr[0];
-		      arr[0]=mid;
-		      break;
+		    	swap(arr,right,0)
+		      	break;
 		    }
 		 
 		    //符合上面条件后 交换两个指针当前位置的元素
-		    let tem=arr[right];
-		    arr[right]=arr[left];
-		    arr[left]=tem;
+		    swap(arr,right,left)
 		  }
 
 		  //多次分解数组，直到数组不能再分解为止（只有一个数据），才能得到正确结果
@@ -52,6 +55,60 @@
 		}
 		//对数组进行排序
 		console.log(quickSort(arr));//[0, 2, 4, 5, 5, 8, 9]
+
+		var array=[5,8,4,3,7,1]
+		function quickSort2(array, left, right) {
+	    	var length =array.length;
+	    	// 参数缓存
+	    	var left = typeof left ==='number'? left :0;
+	    	var right = typeof right ==='number'? right : length-1;
+	    
+	        if (left < right) {
+	            var index = left -1;
+	            for (var i = left; i <= right; i++) {
+	                if (array[i] <= array[right]) {
+	                    index++;
+	                    var temp = array[index];
+	                    array[index] = array[i];
+	                    array[i] = temp;
+	                }
+	            }
+	            quickSort2(array, left, index -1);
+	            quickSort2(array, index +1, right);
+	        }
+	        return array;
+	    }
+	    console.log(quickSort2(array))
+
+
+	    // 三路快排
+	    function quickSort_3(arr1){
+	    	// 递归出口
+	    	if (arr1.length == 0) {
+	    		return [];
+	    	}
+	    	//1.新建数组变量left、center、right
+	    	var left = [];
+	    	var center = [];
+	    	var right = [];
+	    	// 2.选基准值
+	    	var pivot = arr1[0];//可随机选
+
+	    	// 3.遍历数组元素，小于基准值的存到left数组，等于基准值的存到center数组，大于基准值的存到right数组。
+	    	for (var i=0;i<arr1.length;i++){
+	    		if (arr1[i]<pivot) {
+	    			left.push(arr1[i])
+	    		} else if (arr1[i]==pivot){
+	    			center.push(arr1[i])
+	    		} else{
+	    			right.push(arr1[i])
+	    		}
+	    	}
+	    	// 4.递归调用
+	    	return [...quickSort_3(left),...center,...quickSort_3(right)]
+	    }
+	    
+	    console.log(quickSort_3([2,0,2,1,1,0]))
 	</script>
 	
 </body>
