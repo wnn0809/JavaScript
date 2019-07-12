@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>页面布局</title>
+	<style type="text/css">
+		html *{
+			padding: 0px;
+			margin: 0px;
+		}
+		/*.box div{
+			min-height: 200px;
+		}*/
+
+	/*<!-- 1.float方法 -->*/
+		
+		/*.partone {
+			width: 300px;
+			background: pink;
+			float: left;
+		}
+		
+		.parttwo {
+			background: blue;
+			color: #ffffff;
+			text-align: center;
+		}
+		
+		.partthree {
+			width: 300px;
+			background: orange;
+			float: right;
+		}
+*/
+	/*2.绝对定位*/
+		/*.box {
+			position: relative;
+		}
+		.partone {
+			left: 0px;
+			width: 300px;
+			background: pink;
+			position: absolute;;
+		}
+		.parttwo {
+			left: 300px;
+			right: 300px;
+			background: blue;
+			color: #ffffff;
+			text-align: center;
+			position: absolute;
+		}
+		.partthree {
+			right: 0px;
+			width: 300px;
+			background: orange;
+			position: absolute;
+		}
+*/
+	/*3.弹性布局flex*/
+		/*.box {
+			display: flex;
+		}
+		.partone {
+			width: 300px;
+			background: pink;
+		}
+		.parttwo {
+			background: blue;
+			color: #ffffff;
+			text-align: center;
+			flex: 1;
+		}
+		.partthree {
+			width: 300px;
+			background: orange;
+		}*/
+	/*4.网格grid布局解决方案*/
+		/*.box {
+			display: grid;
+			grid-template-columns: 300px auto 300px;
+		}
+		.partone {
+			background: pink;
+		}
+		.parttwo {
+			background: blue;
+			color: #ffffff;
+			text-align: center;
+		}
+		.partthree {
+			background: orange;
+		}*/
+	/*5..table布局解决方案*/
+		/*.box {
+			width: 100%;
+			display: table;
+			
+		}
+		.box div{
+			display: table-cell;
+			height: 200px;
+		}
+		.partone {
+			background: pink;
+			width: 300px;
+		}
+		.parttwo {
+			background: blue;
+			color: #ffffff;
+			text-align: center;
+		}
+		.partthree {
+			background: orange;
+			width: 300px;
+		}*/
+
+	/*上下高度固定，中间自适应*/
+	/*1.绝对定位 各部分要设置宽度*/
+		/*.partone {
+			top: 0;
+			height: 100px;
+			width: 100%;
+			background: pink;
+			position: absolute;
+		}
+		.parttwo {
+			bottom: 100px;
+			top: 100px;
+			width: 100%;
+			background: blue;
+			color: #ffffff;
+			text-align: center;
+			position: absolute;
+		}
+		.partthree {
+			bottom: 0;
+			height: 100px;
+			width: 100%;
+			background: orange;
+			position: absolute;
+		}*/
+	/*2.flex方法*/
+		/*html,body{*/
+			/*很重要，这步不设置高度，下面box高度100%不会起作用*/
+			/*height: 100%;*/
+		/*}*/
+		/*.box {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+		.partone {
+			height: 100px;
+			background: pink;
+		}
+		.parttwo {
+			flex: 1;
+			background: blue;
+			color: #ffffff;
+			text-align: center;
+		}
+		.partthree {
+			height: 100px;
+			background: orange;
+		}*/
+	/*3.网格grid方法*/
+		/*html,body{*/
+			/*很重要，这步不设置高度，下面box高度100%不会起作用*/
+			/*height: 100%;*/
+		/*}*/
+		/*.box {
+			width: 100%;
+			height: 100%;
+			display: grid;
+			grid-template-rows: 100px auto 100px;
+		}
+		.partone {
+			background: pink;
+		}
+		.parttwo {
+			background: blue;
+			color: #ffffff;
+			text-align: center;
+		}
+		.partthree {
+			background: orange;
+		}*/
+	/*4.table布局*/
+		html,body{
+			/*很重要，这步不设置高度，下面box高度100%不会起作用*/
+			height: 100%;
+		}
+		.box {
+			width: 100%;
+	    	height: 100%;
+	    	display: table;
+		}
+		.partone {
+			display: table-row;
+			background: pink;
+			height: 100px;
+		}
+		.parttwo {
+			display: table-row;
+			background: blue;
+			color: #ffffff;
+			text-align: center;
+		}
+		.partthree {
+			display: table-row;
+			background: orange;
+			height: 100px;
+		}
+	</style>
+</head>
+<body>
+	<article class="box">
+		<!-- 前两种方式 -->
+		<!-- <div class="partone">partone</div>
+		<div class="partthree">partthree</div>
+		<div class="parttwo">
+			<h2>页面布局</h2>
+			<p>中间自适应解决方案</p>
+			<p>中间自适应解决方案</p>
+			<p>中间自适应解决方案</p>
+			<p>中间自适应解决方案</p>
+		</div> -->
+		<!-- 后3种方式 -->
+		<!-- 特别说明：table布局每部分要有内容背景颜色才会显示 -->
+		<div class="partone">partone</div>
+		<div class="parttwo">
+			<h2>页面布局</h2>
+			<p>中间自适应解决方案</p>
+			<p>中间自适应解决方案</p>
+			<p>中间自适应解决方案</p>
+			<p>中间自适应解决方案</p>
+		</div>
+		<div class="partthree">partthree</div>
+	</article>
+</body>
+</html>
