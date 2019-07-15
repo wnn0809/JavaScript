@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>盒模型和bfc</title>
+	
+</head>
+
+<body>
+	<style type="text/css">
+		html *{
+			padding: 0;
+			margin: 0;
+		}
+		#father {
+			background: green;
+			overflow: hidden;
+		}
+		#son {
+			height: 100px;
+			background: pink;
+			margin-top:10px;
+		}
+	</style>
+	<section id="father">
+		<article id="son">
+			<p>我是子元素</p>
+			<p>我是子元素</p>
+			<p>我是子元素</p>
+		</article>
+	</section>
+</body>
+</html>
