@@ -41,10 +41,10 @@
             }
             
         }
-        // document.onscroll = throttle(function(){
-        //     console.log("scroll事件被触发了"+Date.now());
-        //     }
-        //     ,2000)
+        document.onscroll = throttle(function(){
+            console.log("scroll事件被触发了"+Date.now());
+            }
+            ,2000)
 
     /*
     函数防抖：一个需要频繁触发的函数，在规定时间内只让最后一次生效，前面不生效。
@@ -63,7 +63,7 @@
     }
     document.getElementById('btn').onclick = debounce(function(){
         console.log('点击事件被触发了'+Date.now());
-    },2000)  
+    },1000)  
     </script>
 </body>
 </html>
