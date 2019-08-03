@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数节流与防抖</title>
+    <style>
+        html,body{
+            height: 500%;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <script>
+        // 面试题:什么是函数节流，什么是函数防抖？
+        /*
+        函数节流：一个函数执行一次后，只有大于设定的时间周期才会执行第二次。
+        例如：有个需要频繁触发的函数，出于性能优化角度，在规定的时间内，
+        只让函数触发的第一次生效，后面的不生效。
+        */
+        /*
+        节流函数：throttle
+        fn:   要被节流的函数
+        delay：规定的时间
+        */
+        function throttle(fn,delay){
+            // 记录上一次触发的时间
+            var lasttime = 0 ;
+            // 通过闭包的方式使用lasttime变量，每次都是上次的时间
+            return function(){
+                // 
+                var nowtime = Date.now();
+                if(nowtime-lasttime>delay){
+                    // 修正this函数问题
+                    fn.call(this);
+                    // 同步时间
+                    lasttime = nowtime;
+                }
+            }
+            
+        }
+        // document.onscroll = throttle(function(){
+        //     console.log("scroll事件被触发了"+Date.now());
+        //     }
+        //     ,2000)
+
+    /*
+    函数防抖：一个需要频繁触发的函数，在规定时间内只让最后一次生效，前面不生效。
+    */
+    function debounce(fn,delay){
+        // 记录上一次的延时器
+        var timer = null;
+        return function(){
+            // 清除上一延时器
+            clearTimeout(timer)
+            // 重新设置新的延时器
+            timer = setTimeout(function(){
+                    fn.apply(this)
+            },delay)
+        }
+    }
+    document.getElementById('btn').onclick = debounce(function(){
+        console.log('点击事件被触发了'+Date.now());
+    },2000)  
+    </script>
+</body>
+</html>
