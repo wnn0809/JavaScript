@@ -8,14 +8,60 @@
 </head>
 <body>
     <script>
+        // 第一题： 0，1，2，3，4  
+        // for (var i = 0; i < 5; i++) {
+        // console.log(i);
+        // }
+
+        // 第二题：5个5，因为定时1000*i，每隔一秒输出1个，如果不乘i，一次性输出5个5
+        /*
         for (var i = 0; i < 5; i++) {
             setTimeout(function() {
                 console.log(new Date, i);//执行1s后一次性输出5个5
-            }, 1000);
+            }, 1000*i);
         }
 
         console.log(new Date, i);//执行后立即输出一个5
+       */
+        
+        // 第三题：0，1，2，3，4
+        // for (var i = 0; i < 5; i++) {
+        //     (function(i) {
+        //         setTimeout(function() {
+        //         console.log(i);
+        //         }, i * 1000);
+        //     })(i);
+        //     }
+        // 第四题：5个5，内部没有引用i
+        // for (var i = 0; i < 5; i++) {
+        //     (function() {
+        //         setTimeout(function() {
+        //         console.log(i);
+        //         }, i * 1000);
+        //     })(i);
+        //     }
+        // 第五题：一次性输出0，1，2，3，4，这里定时i * 1000有没有乘i结果是一样的
+        // for (var i = 0; i < 5; i++) {
+        //     setTimeout((function(i) {
+        //         console.log(i);
+        //     })(i), i * 1000);
+        // }
 
+        //第六题： promise
+        // 2，3，5，4，1
+        setTimeout(function() {
+            console.log(1)
+        }, 0);
+        new Promise(function executor(resolve) {
+            console.log(2);
+            for( var i=0 ; i<10000 ; i++ ) {
+                i == 9999 && resolve();
+            }
+            console.log(3);
+            }).then(function() {
+            console.log(4);
+            });
+        console.log(5);
     </script>
 </body>
 </html>
